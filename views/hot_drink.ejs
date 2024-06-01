@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hot Drink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #ff9966, #ff5e62);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        .container-custom {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        h1, h2 {
+            margin: 0 0 20px;
+        }
+        
+        p {
+            text-align: left;
+            margin: 5px 0;
+        }
+        
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        
+        .success {
+            color: #008000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <form action="/cold_drink" method="post">
+            <h1 class="text-center mb-4">Выберите горячий напиток</h1>
+            <% for (let i = 1; i <= breakfastCount; i++) { %>
+                <div class="form-group">
+                    <label for="hotDrink<%= i %>">Горячий напиток <%= i %>:</label>
+                    <select class="form-control" id="hotDrink<%= i %>" name="hotDrink<%= i %>" required>
+                        <option value="кофе американо">кофе американо</option>
+                        <option value="кофе эспрессо">кофе эспрессо</option>
+                        <option value="чай черный">чай черный</option>
+                        <option value="чай с бергамотом">чай с бергамотом</option>
+                        <option value="чай зеленый">чай зеленый</option>
+                        <option value="чай фруктовый">чай фруктовый</option>
+                        <option value="чай травянной">чай травянной</option>
+                    </select>
+                </div>
+            <% } %>
+            <button type="submit" class="btn btn-primary btn-block">Next</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

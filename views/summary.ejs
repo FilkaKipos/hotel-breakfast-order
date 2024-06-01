@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #ff9966, #ff5e62);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        .container-custom {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        h1, h2 {
+            margin: 0 0 20px;
+        }
+        
+        p {
+            text-align: left;
+            margin: 5px 0;
+        }
+        
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        
+        .success {
+            color: #008000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Пожелания</h1>
+        <form action="/submit" method="post">
+            <p hidden>Guest Name: <%= orderData.guestName %></p>
+            <p hidden>Room Number: <%= orderData.roomNumber %></p>
+            <p hidden>Breakfast Time: <%= orderData.breakfastTime %></p>
+            <p hidden>Number of Breakfasts: <%= orderData.breakfastCount %></p>
+            
+            <% for (let i = 1; i <= orderData.breakfastCount; i++) { %>
+                <p hidden>Hot Meal <%= i %>: <%= orderData[`hotMeal${i}`] %></p>
+                <p hidden>Hot Drink <%= i %>: <%= orderData[`hotDrink${i}`] %></p>
+                <p hidden>Cold Drink <%= i %>: <%= orderData[`coldDrink${i}`] %></p>
+                <p hidden>Dessert <%= i %>: <%= orderData[`dessert${i}`] %></p>
+            <% } %>
+
+            <div class="form-group">
+                <label for="specialRequests">Ваши пожелания</label>
+                <textarea class="form-control" id="specialRequests" name="specialRequests" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Отправить заказ</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

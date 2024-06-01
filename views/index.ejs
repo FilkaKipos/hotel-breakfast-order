@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказ Завтрака</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #ff9966, #ff5e62);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        .container-custom {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        h1, h2 {
+            margin: 0 0 20px;
+        }
+        
+        p {
+            text-align: left;
+            margin: 5px 0;
+        }
+        
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        
+        .success {
+            color: #008000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-custom">
+        <h2>Как оформить заказ</h2>
+        <p>Ознакомьтесь с предложенным меню, заполните форму и отправьте ее администратору, после чего, Ваш заказ будет принят.</p>
+        <p>Завтрак включает в себя:</p>
+        <p>  ▪️ одно основное блюдо,</p>
+        <p>  ▪️ один горячий напиток,</p>
+        <p>  ▪️ один холодный напиток,</p>
+        <p>  ▪️ один десерт</p>
+        <p> Вы можете дополнить завтрак любыми позициями из меню, за дополнительную оплату.</p>
+        <img class="content" src="/image/menu.jpg" alt="menu">
+    </div>
+
+    <form class="container container-custom" action="/hot_meal" method="post">
+        <h1>Заказ завтрака</h1>
+        <div class="form-group">
+            <label for="guestName">ФИО гостя:</label>
+            <input type="text" class="form-control" id="guestName" name="guestName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="roomNumber">Номер комнаты:</label>
+            <select class="form-control" id="roomNumber" name="roomNumber" required>
+                <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="breakfastTime">Время завтрака:</label>
+            <input type="time" class="form-control" id="breakfastTime" name="breakfastTime" required>
+        </div>
+
+        <div class="form-group">
+            <label for="breakfastCount">Количество завтраков:</label>
+            <select class="form-control" id="breakfastCount" name="breakfastCount" required>
+                <% for (let i = 1; i <= 3; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Далее</button>
+    </form>
+
+    <!-- Подключение Bootstrap JS и зависимости -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
